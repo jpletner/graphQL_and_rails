@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GraphQL</title>
+
+		<meta name="description" content="GraphQL is an application layer query language from Facebook">
+		<meta name="author" content="Jenny Pletner">
+<!--forked from https://github.com/hakimel/reveal.js from Hakim El Hattab-->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+        <!--set your theme here-->
+		<link rel="stylesheet" href="css/theme/jenny.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+
+	<body>
+
+        <header>
+            <ul>
+                <li><a href="https://twitter.com/jpletner" target="_blank"><img width="30px" src="http://cdn.business2community.com/wp-content/uploads/2015/07/Twitter-icon.png.png"></a></li>
+                <li><a href="https://www.linkedin.com/pub/jenny-pletner/2/396/44" target="_blank"><img width="30px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/2000px-Linkedin_icon.svg.png"></a></li>
+                <li><a href="https://github.com/jpletner" target="_blank"><img width="30px" src="http://icons.iconarchive.com/icons/limav/flat-gradient-social/256/Github-icon.png"></a></li>
+            </ul>
+        </header>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background=""> <!--cover-->
+                    <h1>GraphQL</h1>
+                    <h3><span class="red">The Application Layer Query Language from <span class="blue">Facebook</span></h3>
+					<p>
+						<small>Created by <a href="https://www.linkedin.com/pub/jenny-pletner/2/396/44" target="_blank">Jenny Pletner</a> / <a href="http://twitter.com/jpletner" target="_blank">@jpletner</a></small>
+					</p>
+				</section> <!--cover-->
+
+          <section> <!--The Plan-->
+	          <div class="theplan">
+	          <h1>The Plan</h1>
+	              <p><a href="#/2">What is it?</a></p>
+	              <p><a href="#/3">How does it work?</a></p>
+	              <p><a href="#/4">Pros and Cons</a></p>
+								<p><a href="#/5">Transistion</a></p>
+								<p><a href="#/6">Resources</a></p>
+								<p><a href="#/7"><span class="blue">Discussion</span></a></p>
+	          </div>
+	          <aside class="notes">Internal links</aside>
+          </section><!--End the Plan-->
+				<section><!--What is it-->
+					<section><!--What is it-->
+	          <h1>What is it<span class="red">?</span></h1>
+	          <ul>
+	              <li><span class="red">GraphQL</span> is a Query Language Specification</li>
+								<li>Typically served over HTTP via a single endpoint</li>
+								<li>Programming Language Agnostic</li>
+								<li>Provides an alternative to the REST API Architecture</li>
+	          </ul>
+						<!-- <img width="600" data-src="assets/graphql_1.png" alt="Down arrow"> -->
+	          <aside class="notes">
+							Deployed at FB in 2012
+							Provides an alternative to using the http verbs
+							Typically served over HTTP via a single endpoint
+							which expresses the full set of capabilities of the service.
+							In contrast to rest of course, which exposes a suite of URLs
+							Front-end and Back-end Lang Agnostic (works for react, angular, node, elixir, rails, etc)
+							Also transport agnostic (do it over http, websockets, email even)
+						</aside>
+            </section><!--What is it-->
+						<section><!--Quote-->
+							<h1>REST<span class="red"> API</span></h1>
+		          <p><i>It seemed like our responses simultaneously sent too much data and didn’t include data that consumers needed.<span class="green"> - </span><span class="red">Github</span></i></p>
+							<!-- <img width="600" data-src="assets/graphql_1.png" alt="Down arrow"> -->
+		          <aside class="notes">
+								Built to solve problems with Rest.
+								Alot of the problems that we are facing
+								Problems:
+								Choosing between multiple requests or
+								bloated responses with data that is hard to parse.
+								Fixed responses, issues with versioning, hard to know who will be impacted
+								Inflexible: sometimes required 2 or 3 separate calls to assemble a complete view of a resource
+							</aside>
+						</section><!--Quote-->
+				</section data-background=""><!--What is it?-->
+				<section data-background=""><!--How does it work sections-->
+
+						<section data-transition="slide-in fade-out"> <!--How does it work?-->
+	            <h1>How does it work<span class="red">?</span></h1>
+							<ul>
+	                <li>Made up of two components, <span class="red">schema</span> and <span class="red">queries</span></li>
+									<li>You describe your API using a schema (a graph)</li>
+									<li>Clients query data through the schema</li>
+	                <li>Predictable objects returned resembling the query used</li>
+	            </ul>
+							<aside class="notes">
+								user-defined type system - "schema"
+								graphql server describes what data is available via the schema
+								clients describe what data they need
+
+								You describe your API using a schema (a graph) so GraphQL knows how to retrieve data
+
+								Defining the schema, from what I've read, seems to be
+								one of the harder things to do.
+
+								Clients request data through the schema using the query language
+								One single request can fulfill exactly what the client needs
+
+								Front-end data requests do not rely on pre-fab backend
+								routes so they can be completely dynamic.
+							</aside>
+            </section> <!--How does it work?-->
+
+						<section><!--Sample Query-->
+	            <h1>Sample Query</h1>
+	            <ul class="inline">
+	                <li class="inline">
+										<pre><code class="json" data-trim>
+
+{ choice(id: 1) {
+    id,
+    body,
+    code,
+    question {
+      id,
+      type,
+      style
+    }
+  }
+}
+										</code></pre>
+									</li>
+									<li class="inline">
+										<pre><code class="json" data-trim>
+	{ "choice" : {
+     "id": 1,
+     "body": "Much More Satisfied",
+     "code": 6,
+     "question": {
+       "id": 1,
+       "type": "single_choice",
+       "style": "vertical_slider"
+      }
+    }
+  }
+											</code></pre>
+										</li>
+								</ul>
+								<aside class="notes">
+									Returns objects that resemble the query used to describe
+									them.
+									Only returns data that's explicitly requested.
+									This allows changes to be made without creating a breaking change.
+
+									Also allows mutations on server so you can ask a
+									Graph QL query to change a piece of data being sent back. 
+								</aside>
+            </section><!--Sample Query-->
+						<section><!--Sample Query Curl-->
+	            <h1>Query Curl</h1>
+	            <ul class="inline">
+	                <li class="inline">
+										<pre><code class="json" data-trim>
+
+curl -XPOST -d 'query=query { blogs { id } }' \
+     localhost:3000/graphql
+
+{"data":{"blogs":[]}}
+										</code></pre>
+									</li>
+								</ul>
+								<aside class="notes">
+								</aside>
+            </section><!--Sample Query Curl-->
+						<section><!--Sample Mutation Curl-->
+							<h1>Mutation Curl</h1>
+							<ul class="inline">
+									<li class="inline">
+										<pre><code class="json" data-trim>
+
+curl -XPOST \
+  -d 'query=mutation {
+         createBlog(input: {title: "foobar", author_id: 1}) {
+             blog { id }
+      }}' localhost:3000/graphql
+{"data":{"createBlog":{"blog":{"id":1}}}}
+										</code></pre>
+									</li>
+								</ul>
+								<aside class="notes">
+								</aside>
+						</section><!--Sample Mutation Curl-->
+						<section>
+							<h1>Graphiql IDE Demo</h1>
+						</section>
+				</section data-background=""><!--How does it work sections-->
+					<section data-background=""><!--Pros and Cons-->
+
+						<section style="text-align: left;"><!--Pros-->
+							<h1>Pros and Cons</h1>
+						</section><!--Pros-->
+
+						<section style="text-align: left;"><!--Pros-->
+							<h1>Pros</h1>
+								- <a>Return only what's needed, no additional bloat</a> <br>
+								- <a>Eases pain of changing data requirements</a> <br>
+								- <a>Cleaner and simpler clientside development</a> <br>
+								- <a>Scalable, faster platform development in the long-term</a> <br>
+								- <a>Introspective capabilities</a>
+							</p>
+							<aside class="notes">
+								Pros:
+								provide the mobile client exactly what it needed for each request, with no additional bloat
+								Optimize the database and cache layer to do everything in an extremely performant way
+								Easier for clientside developers to iterate quickly and batch together network requests
+								GraphQL tries to solve one of the biggest problems we have with REST APIs these days: Changing data requirements in the clients.
+								It solves the issue of having to choose between augmenting responses rather or adding more endpoints
+								Receiving more data than you need (this is more what we are doing)
+								Responses with a lot of data (struggled with the amount of effort it took to parse, deserialize, and store the JSON)
+								Response times were longer, caches were larger, and every change to a small partial expanded to a much larger change all over the app.
+								Introspective capabilities gives clientside developers more autonomy,
+								they can send queries to find out what data is available which helps them build their queries
+								Client can talk to the server with this introspection
+								Gives power to the clients
+							</aside>
+						</section><!--Pros-->
+
+						<section style="text-align: left;"><!--Cons-->
+							<h1>Cons</h1>
+								- <a>Learning curve steep for complex queries and mutations</a> <br>
+								- <a>Dependecies on several gems</a> <br>
+								- <a>Early implementation, lack of resources</a> <br>
+								- <a>Error handling is not ideal</a> <br>
+								- <a>Difficult to restrict what you expose to certain clients</a>
+							</p>
+							<aside class="notes">
+								Cons:
+								Swallows errors
+								not as easy as rest to get up and running on immediately.
+								Requires the use of a lot of gems
+								not a restful api, would need to deprecate our whole rest api
+							</aside>
+						</section><!--Cons-->
+				</section data-background=""><!--Pros and Cons-->
+		  	<section data-background=""><!--Transistion-->
+					<section style="text-align: left;"><!--Transistion-->
+						<h1>Transistion</h1>
+					</section><!--Transistion-->
+
+						<section style="text-align: left;"><!--Transistion Plan-->
+							<h1>Transistion Plan</h1>
+							<p>
+								- <a>Start with a proof of concept</a> <br>
+								- <a>Build select schemas and types</a> <br>
+								- <a>Start by replacing GET requests</a> <br>
+								- <a>Use webapp as a trial project</a> <br>
+								- <a>Use as inspiration</a>
+							</p>
+							<aside class="notes">
+								Start with a proof of concept (2 people about 2 weeks)
+								Maybe start with one webapp in mind
+
+								Options:
+								If you build a graphql api and you want too still have your legacy
+								rest api available, so in the code for a controller you build a
+								graphql query request and pipe that through graphql so it returns
+								what graphql query would have returned.
+
+								There are tools to provide graphql functionality on top of your
+								restapi so clients can customize their requests
+
+								While GraphQL could be used alongside a suite of resource URLs,
+								this can make it harder to use with tools like GraphiQL.
+
+								Can implement for only get requests to start and deal with mutations later
+							</aside>
+						</section><!--Transistion-->
+						<section style="text-align: left;"><!--Inspiration-->
+							<h1>Inspiration</h1>
+							<p>
+								- <a>Simple, parseable responses that parallel request format</a> <br>
+								- <a>Implement parse layer that dictates response structure</a> <br>
+								- <a>Better documentation</a> <br>
+							</p>
+							<aside class="notes">
+							Implement layer that accepts query params that will dictate content ]
+							and format of response, to prevent bloated responses and give the
+							clients exactly what they ask for.
+							</aside>
+						</section><!--Inspiration-->
+						<section style="text-align: left;"><!--Features and Functionality-->
+							<h1>Needs Work</h1>
+							<p>
+								- <a>Authentication</a> <br>
+								- <a>Pagination</a> <br>
+								- <a>Data Loading</a> <br>
+								- <a>Caching</a> <br>
+								- <a>Complex Mutations</a> <br>
+							</p>
+						</section><!--Features and Functionality-->
+					</section data-background=""><!--Transistion-->
+
+					<section data-background=""><!--Resources-->
+						<section><!--Resources-->
+							<h1>Resources</h1>
+							<aside class="notes">Notes</aside>
+						</section><!--Resources-->
+
+						<section><!--Articles & Demos-->
+							<h1>Articles & Demos</h1>
+							<ul>
+								<li><a href="https://githubengineering.com/the-github-graphql-api/" target="_blank">The GitHub GraphQL API</a></li>
+								<li><a href="https://hackernoon.com/graphql-api-with-rails-faab252aaffa" target="_blank">GraphQL Api With Rails</a></li>
+								<li><a href="http://mgiroux.me/2015/getting-started-with-rails-graphql-relay/" target="_blank">Getting Started with Rails and GraphQL</a></li>
+								<li><a href="https://github.com/chentsulin/awesome-graphql" target="_blank">Working list of GraphQL Resources</a></li>
+								<li><a href="https://medium.com/@gauravtiwari/graphql-and-relay-on-rails-authentication-and-authorisation-f7c07ebb47b3" target="_blank">GraphQL and Relay on Rails — Authentication and Mutations</a></li>
+							</ul>
+              <aside class="notes">Notes</aside>
+						</section><!--Articles & Demos-->
+
+						<section><!--Videos-->
+							<h1>Videos</h1>
+							<ul>
+								<li><a href="https://www.youtube.com/watch?v=DPVXFhuX8_w" target="_blank">GraphQL Basics in Rails 5</a></li>
+								<li><a href="https://www.youtube.com/watch?v=Wlu_PWCjc6Y" target="_blank">GraphQL at Shopify</a></li>
+								<li><a href="https://www.youtube.com/watch?v=eD7kLFGOgVw" target="_blank">From REST to GraphQL</a></li>
+							</ul>
+              <aside class="notes">Notes</aside>
+						</section><!--Videos-->
+
+						<section><!--Gems-->
+							<h1>Gems</h1>
+							<ul>
+								<li><a href="https://github.com/rmosolgo/graphiql-rails" target="_blank">GraphiQL-Rails - Mount the GraphiQL IDE in Ruby on Rails</a></li>
+								<li><a href="https://github.com/rmosolgo/graphql-ruby" target="_blank">Graphql-Ruby - Ruby implementation of GraphQL</a></li>
+								<li><a href="https://github.com/Shopify/graphql-batch" target="_blank">Graphql-Batch - A query batching executor from Shopify</a></li>
+								<li><a href="https://github.com/facebook/dataloader" target="_blank">DataLoader - Batching and Caching</a></li>
+								<li><a href="https://github.com/coldog/graphql-api" target="_blank">GraphQL-Api - Auto generates queries</a></li>
+							</ul>
+              <aside class="notes">
+								IDE: Integrated Development Enviroment
+								DataLoader - generic utility to be used as part of your application's data fetching layer to provide batching and caching
+								GraphQL-Api - supports auto generating queries based on Active Record models and plain Ruby objects
+							</aside>
+						</section><!--Gems-->
+					</section data-background=""><!--Resources-->
+
+						<section style="text-align: left;"><!--Discussion-->
+							<h1>Let's Discuss</h1>
+						</section><!--Discussion-->
+
+
+
+
+    <script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

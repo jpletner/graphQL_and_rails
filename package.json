@@ -1,0 +1,18 @@
+{
+  "name": "reveal_presentation",
+  "version": "1.0.0",
+  "description": "Presentaion about Reveal.JS",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jenny Pletner",
+  "license": "ISC"
+}
