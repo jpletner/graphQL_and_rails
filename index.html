@@ -77,6 +77,7 @@
 	              <li><span class="red">GraphQL</span> is a Query Language Specification</li>
 								<li>Typically served over HTTP via a single endpoint</li>
 								<li>Programming Language Agnostic</li>
+								<li>Transport Agnostic</li>
 								<li>Provides an alternative to the REST API Architecture</li>
 	          </ul>
 						<!-- <img width="600" data-src="assets/graphql_1.png" alt="Down arrow"> -->
@@ -109,12 +110,24 @@
 
 						<section data-transition="slide-in fade-out"> <!--How does it work?-->
 	            <h1>How does it work<span class="red">?</span></h1>
+							<aside class="notes">
+							</aside>
+            </section> <!--How does it work?-->
+
+						<section data-transition="slide-in fade-out"> <!--How does it work?-->
+							<h1>The Schema</h1>
 							<ul>
-	                <li>Made up of two components, <span class="red">schema</span> and <span class="red">queries</span></li>
+									<li>Made up of two components, <span class="red">schema</span> and <span class="red">queries</span></li>
 									<li>You describe your API using a schema (a graph)</li>
+									<li>The schema describes:
+										<ul>
+											<li>objects that represent your resources,</li>
+											<li>fields on those objects,</li>
+											<li>and the connections between various objects</li>
+										</ul>
 									<li>Clients query data through the schema</li>
-	                <li>Predictable objects returned resembling the query used</li>
-	            </ul>
+									<li>Predictable objects returned resembling the query used</li>
+							</ul>
 							<aside class="notes">
 								user-defined type system - "schema"
 								graphql server describes what data is available via the schema
@@ -131,7 +144,8 @@
 								Front-end data requests do not rely on pre-fab backend
 								routes so they can be completely dynamic.
 							</aside>
-            </section> <!--How does it work?-->
+						</section> <!--How does it work?-->
+
 
 						<section><!--Sample Query-->
 	            <h1>Sample Query</h1>
@@ -210,6 +224,7 @@ curl -XPOST \
 									</li>
 								</ul>
 								<aside class="notes">
+									Mutations are equivalent to POST, PUT, PATCH and DELETE in HTTP/REST speak
 								</aside>
 						</section><!--Sample Mutation Curl-->
 						<section>
@@ -229,7 +244,6 @@ curl -XPOST \
 								- <a>Cleaner and simpler clientside development</a> <br>
 								- <a>Scalable, faster platform development in the long-term</a> <br>
 								- <a>Introspective capabilities</a>
-							</p>
 							<aside class="notes">
 								Pros:
 								provide the mobile client exactly what it needed for each request, with no additional bloat
@@ -251,9 +265,13 @@ curl -XPOST \
 							<h1>Cons</h1>
 								- <a>Learning curve steep for complex queries and mutations</a> <br>
 								- <a>Dependecies on several gems</a> <br>
-								- <a>Early implementation, lack of resources</a> <br>
 								- <a>Error handling is not ideal</a> <br>
-								- <a>Difficult to restrict what you expose to certain clients</a>
+								- <a>Difficult to restrict what you expose to certain clients</a> <br>
+								- <a>Early implementation, lack of resources</a> <br>
+
+							<p>
+								<a href="http://graphql.org/users/" target="_blank"><i class="blue">Current GraphQL Users</i></a> <br>
+								<a href="https://github.com/APIs-guru/graphql-apis" target="_blank"><i class="blue">GraphQL Implementation Repos</i></a>
 							</p>
 							<aside class="notes">
 								Cons:
@@ -273,10 +291,12 @@ curl -XPOST \
 							<h1>Transistion Plan</h1>
 							<p>
 								- <a>Start with a proof of concept</a> <br>
+								- <a>Choose a subset of the platform to power with GraphQL<a> <br>
 								- <a>Build select schemas and types</a> <br>
 								- <a>Start by replacing GET requests</a> <br>
 								- <a>Use webapp as a trial project</a> <br>
-								- <a>Use as inspiration</a>
+								- <a>Use as inspiration</a> <br>
+								- <a href="http://graphql.org/blog/rest-api-graphql-wrapper/" target="_blank">Wrap our current REST API in GraphQL</a></li>
 							</p>
 							<aside class="notes">
 								Start with a proof of concept (2 people about 2 weeks)
@@ -318,6 +338,7 @@ curl -XPOST \
 								- <a>Data Loading</a> <br>
 								- <a>Caching</a> <br>
 								- <a>Complex Mutations</a> <br>
+								- <a>Testing the Schema</a> <br>
 							</p>
 						</section><!--Features and Functionality-->
 					</section data-background=""><!--Transistion-->
@@ -336,6 +357,8 @@ curl -XPOST \
 								<li><a href="http://mgiroux.me/2015/getting-started-with-rails-graphql-relay/" target="_blank">Getting Started with Rails and GraphQL</a></li>
 								<li><a href="https://github.com/chentsulin/awesome-graphql" target="_blank">Working list of GraphQL Resources</a></li>
 								<li><a href="https://medium.com/@gauravtiwari/graphql-and-relay-on-rails-authentication-and-authorisation-f7c07ebb47b3" target="_blank">GraphQL and Relay on Rails — Authentication and Mutations</a></li>
+								<li><a href="https://developer.github.com/early-access/graphql/" target="_blank">Github GraphQL Documentation</a></li>
+								<li><a href="https://building.buildkite.com/tutorial-getting-started-with-graphql-queries-and-mutations-11211dfe5d64" target="_blank">Getting Started with GraphQL Queries and Mutations</a></li>
 							</ul>
               <aside class="notes">Notes</aside>
 						</section><!--Articles & Demos-->
@@ -346,6 +369,9 @@ curl -XPOST \
 								<li><a href="https://www.youtube.com/watch?v=DPVXFhuX8_w" target="_blank">GraphQL Basics in Rails 5</a></li>
 								<li><a href="https://www.youtube.com/watch?v=Wlu_PWCjc6Y" target="_blank">GraphQL at Shopify</a></li>
 								<li><a href="https://www.youtube.com/watch?v=eD7kLFGOgVw" target="_blank">From REST to GraphQL</a></li>
+								<li><a href="https://www.youtube.com/watch?v=_V96jduEvjY" target="_blank">GraphQL on Rails</a></li>
+								<li><a href="https://www.youtube.com/watch?v=UBGzsb2UkeY" target="_blank">Zero to GraphQL in 30 Minutes</a></li>
+								<li><a href="https://www.youtube.com/watch?v=eD7kLFGOgVw" target="_blank">From REST to GraphQL</a></li>
 							</ul>
               <aside class="notes">Notes</aside>
 						</section><!--Videos-->
@@ -355,9 +381,11 @@ curl -XPOST \
 							<ul>
 								<li><a href="https://github.com/rmosolgo/graphiql-rails" target="_blank">GraphiQL-Rails - Mount the GraphiQL IDE in Ruby on Rails</a></li>
 								<li><a href="https://github.com/rmosolgo/graphql-ruby" target="_blank">Graphql-Ruby - Ruby implementation of GraphQL</a></li>
-								<li><a href="https://github.com/Shopify/graphql-batch" target="_blank">Graphql-Batch - A query batching executor from Shopify</a></li>
+								<li><a href="https://github.com/Shopify/graphql-batch" target="_blank">Graphql-Batch - Query batching executor from Shopify</a></li>
 								<li><a href="https://github.com/facebook/dataloader" target="_blank">DataLoader - Batching and Caching</a></li>
 								<li><a href="https://github.com/coldog/graphql-api" target="_blank">GraphQL-Api - Auto generates queries</a></li>
+								<li><a href="https://github.com/github/graphql-client" target="_blank">GitHub's GraphQL API - Ruby library for declaring, composing and executing queries</a></li>
+
 							</ul>
               <aside class="notes">
 								IDE: Integrated Development Enviroment
@@ -368,7 +396,7 @@ curl -XPOST \
 					</section data-background=""><!--Resources-->
 
 						<section style="text-align: left;"><!--Discussion-->
-							<h1>Let's Discuss</h1>
+							<h1>Let<span class="red">'</span>s Discuss</h1>
 						</section><!--Discussion-->
 
 
